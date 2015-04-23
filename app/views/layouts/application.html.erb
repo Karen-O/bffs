@@ -33,7 +33,14 @@
               <li class="divider"></li>
               <li ><%= link_to "Pets", pets_path %></li>
               <li class="divider"></li>
-              <li><%= link_to "Shelters", shelters_path %></li>
+              <li class="has-dropdown">
+                <a href="#">Shelters</a>
+                <ul class="dropdown">
+                  <% @shelters.each do |shelter| %>
+                    <li><%= link_to shelter.name, shelter_path(shelter) %></li>
+                  <% end %>
+                </ul>
+              </li>
               <li class="divider"></li>
               <!-- Below = Secure signout link for current_user -->
               <% if current_user %>
