@@ -20,7 +20,7 @@
             <li class="name">
               <h1>
                 <a href="/">
-                  Best Friends Forever
+                  <img src='/assets/bff-logo.png' alt='bff logo'  class='logo'/> BFF
                 </a>
               </h1>
             </li>
@@ -31,6 +31,7 @@
 
             <ul class="right">
               <li class="divider"></li>
+<!-- <<<<<<< HEAD -->
               <li ><%= link_to "Pets", pets_path %></li>
               <li class="divider"></li>
               <li class="has-dropdown">
@@ -41,9 +42,14 @@
                   <% end %>
                 </ul>
               </li>
+<!-- ======= -->
+              <li ><%= link_to "Find Your Pet Match", matches_path %></li>
+<!-- >>>>>>> 06c4ff52b59265d7ae52ad26c05035d117525954 -->
               <li class="divider"></li>
               <!-- Below = Secure signout link for current_user -->
               <% if current_user %>
+              <li><%= link_to "My Favorites!", favorites_path %></li>
+              <li class="divider"></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
               <% else %>
 

@@ -6,6 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+Shelter.destroy_all
 
 shelter_a = Shelter.create(name: "Good Home For Friends", address: "1234 Fake street, \n Springfield, VA", phone: "703-555-5555", email: "john@sheltera.com" )
 shelter_b = Shelter.create(name: "Fosters's Home For Best Friends", address: "2222 Nowheres Land, \n Washington DC", phone: "202-555-5555", email: "jim@shelterb.com" )

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   devise_for :users, :path => 'user_profiles'
 
   # Nested resources/routes under user:
-  resources :users do
-    resources :favorites
-  end
+
+  resources :favorites
+
 
   resources :pets, only: [:index, :show]
 

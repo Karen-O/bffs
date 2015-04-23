@@ -1,19 +1,27 @@
 <section class="hero large-12 columns"
-  style='background-image: url("http://lorempixel.com/800/800/cats/");'>
+  style='background-image: url("http://lorempixel.com/800/800/animals/");'>
   <div class="row intro panel match-details ">
+  <%= form_tag "/favorites" do %>
+  <%= hidden_field :pet, :id, value: @pet.id %>
+  <%= submit_tag "Favorite!" , class: "button right round"%>
+  <% end %>
     <h2>
       Meet
       <%=@pet.name %></h2>
-    <div class="medium-9 left match-content">
+
+    <div class="medium-8 left match-content">
       <h3>My story</h3>
       <p>
         <%= @pet.bio %>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, rerum odit ipsa iste sint reprehenderit eveniet asperiores porro perspiciatis, optio, architecto mollitia accusamus in autem officiis culpa. Neque natus fuga commodi sequi vel dolorem porro, quia temporibus et. Quae aliquam laborum tempora aliquid, sit ducimus assumenda aperiam velit quia eius recusandae soluta itaque dolores, qui iste eaque fugiat, in nemo deleniti consequatur deserunt repellat possimus dolore nihil natus? Nulla, repellat dignissimos suscipit. Vero, a. Repellat, provident voluptatum odio fuga obcaecati atque aspernatur praesentium voluptatem, laborum, ipsam voluptas? Molestias, iure, repellendus. Reprehenderit earum qui eligendi mollitia, autem nostrum soluta rem a!
+
       </p>
+            <a href='#' class='button round' data-reveal-id="shelter-modal"> Contact Shelter </a>
     </div>
-    <div class="medium-3 right match-side">
-      <h4> Match Percent </h4>
-      <table>
+    <div class="medium-4 right match-side">
+
+      <table class='match-details'>
+      <tr><th>Match</th>
+      <td>95%</td></tr>
         <tr>
           <th>Breed</th>
           <td>
@@ -41,6 +49,19 @@
         </tr>
       </table>
     </div>
+
   </div>
+
 </section>
 
+
+
+<div id="shelter-modal" class="reveal-modal" data-reveal aria-labelledby="shelter-modal" aria-hidden="true" role="dialog">
+  <h2 id="modalTitle">You can find me at <%=@shelter.name %></h2>
+  <p class="lead"><%= @shelter.address %></p>
+   <%= text_field_tag :user_name, nil, placeholder: "Your Name" %>
+   <%= text_field_tag :user_email, nil, placeholder: "Your Email" %>
+   <%= text_area_tag :bio, nil, placeholder: "Tell us about your self" %>
+   <%= link_to "Send!", match_path(@pet.id), class: 'button round' %>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

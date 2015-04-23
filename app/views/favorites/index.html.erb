@@ -1,26 +1,20 @@
 <h1>All Your Favorite Furry Friends!</h1>
 
 
-<!-- QUESTION re: Block below: Is there even a reason to have a form and/or form actions on this page?
-(Or, do we envision a static or dynamic list of 'Favorited' animals for each user?) -->
+<% @pets.each do |pet| %>
+<div class='row '>
+    <div class='panel large-12 columns clearfix'>
+    <a class="" href="<%= match_path(pet.id)%>">
+      <img class='puppy thumb left ' src="<%= pet.picture_url || "http://lorempixel.com/300/300/animals/8/" %>" alt='pet picture'>
+    </a>
 
-<%= form_for([current_user, current_user.favorites.build]) do |f| %>
-<!-- Build out form for current_user (logged-in user)'s "Favorites" page, displaying all pets they've "Favorited" -->
-  <p>
-    <%= f.label :label %><br>                   <!-- What values would we want here? (:label, :text, etc. just examples) -->
-    <%= f.text_field :text %>
-  </p>
-  <p>
-    <%= f.submit %>                             <!-- "Submit Form"... And display what?? --> 
-  </p>
+         <h3><%= link_to pet.name, match_path(pet.id) %> <small><%= pet.color %> <%= pet.breed %></small></h3>
+         <ul class='puppy-details'>
+             <li><%= pet.sex %> - <%= pet.age %> old </li>
+            <li><%= "Kid Friendly!" if pet.kid_friendly == true%></li>
+         </ul>
+
+    </div>
+
+</div>
 <% end %>
-
-
-<!-- Below = Iterate through current_user's saved faves, displaying them in a grid or list view (all on one page)-->  
-
-<ul>
-  <% @favorites.each do |favorite| %>     
-  <li><%= favorite.img_url %></li>   
-<!-- img_url = just an example / suggested attribute to display for each specific instance of Favorites -->  
-  <% end %>
-</ul>
