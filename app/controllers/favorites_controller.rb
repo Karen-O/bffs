@@ -12,8 +12,7 @@ class FavoritesController < ApplicationController
 
       @pet = Pet.find(params[:pet][:id])
       @favorite  = Favorite.find_or_create_by(user_id: current_user.id, pet_id: @pet.id)
-      #current_user.favorites.create(pet_id: @pet.id)
-      redirect_to favorites_url
+      redirect_to match_url(@pet.id)
     end
 
 end

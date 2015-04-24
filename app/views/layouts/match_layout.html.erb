@@ -14,9 +14,58 @@
 
   <body >
 
+ <nav class="top-bar" data-topbar>
+          <ul class="title-area">
+
+            <li class="name">
+              <h1>
+                <a href="/">
+                  <img src='/assets/bff-logo.png' alt='bff logo'  class='logo'/> BFF
+                </a>
+              </h1>
+            </li>
+            <li class="toggle-topbar menu-icon"><a href="#"><span>menu</span></a></li>
+          </ul>
+
+          <section class="top-bar-section">
+
+            <ul class="right">
+              <li class="divider"></li>
+              <li ><%= link_to "Find Your Pet Match", matches_path %></li>
+              <li class="divider"></li>
+              <!-- Below = Secure signout link for current_user -->
+              <% if current_user %>
+              <li><%= link_to "Favorites (#{current_user.favorites.count})", favorites_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+              <% else %>
+              <li> <a href="#" data-reveal-id="sign-in-modal">Sign In</a></li>
+            <% end %>
+            </ul>
+          </section>
+        </nav>
+  <div id="sign-in-modal" class="reveal-modal remove-whitespace" data-reveal>
+<div class="row">
+  <%= render "login_forms/sign_in" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</div>
+
+  <div id="sign-up-modal" class="reveal-modal remove-whitespace" data-reveal>
+<div class="row">
+  <%= render "login_forms/sign_up" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</div>
+
+
 
     <%= yield %>
 
-
+<footer>
+<div class='footer-content row'>
+  &copy; best friends pet finder
+</div>
+</footer>
 </body>
 </html>

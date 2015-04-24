@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 20150424013918) do
     t.datetime "updated_at",   null: false
     t.text     "bio"
     t.string   "picture_url"
+    t.string   "pet_type"
   end
 
   create_table "shelters", force: :cascade do |t|

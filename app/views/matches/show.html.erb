@@ -1,9 +1,15 @@
 <section class="hero large-12 columns"
-  style='background-image: url("http://lorempixel.com/800/800/animals/");'>
+  style='background-image: url("<%= @pet.picture_url %>");'>
   <div class="row intro panel match-details ">
-  <%= form_tag "/favorites" do %>
+  <% if !current_user %>
+  <a href='#' class='button tiny right round' data-reveal-id="sign-in-modal">Sign in to favorite</a>
+  <% elsif @fav %>
+  <h4 class='right'><%= @pet.name %> is a favorite!</h4>
+  <% else %>
+   <%= form_tag "/favorites" do %>
   <%= hidden_field :pet, :id, value: @pet.id %>
-  <%= submit_tag "Favorite!" , class: "button right round"%>
+  <%= submit_tag "Add to favorites!" , class: "button tiny right round "%>
+  <% end  %>
   <% end %>
     <h2>
       Meet
@@ -65,3 +71,4 @@
    <%= link_to "Send!", match_path(@pet.id), class: 'button round' %>
   <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
+

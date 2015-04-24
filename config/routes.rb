@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'matches#index'     # 'Favorites' one option; based on assumption that user has favorites if they have a login?
                         # We like 'pets#index' better
   # Alias user routes for user accounts/profiles:
-  devise_for :users, :path => 'user_profiles'
+  devise_for :users
 
   # Nested resources/routes under user:
 

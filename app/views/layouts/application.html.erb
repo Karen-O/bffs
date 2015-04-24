@@ -48,16 +48,30 @@
               <li class="divider"></li>
               <!-- Below = Secure signout link for current_user -->
               <% if current_user %>
-              <li><%= link_to "My Favorites!", favorites_path %></li>
+              <li><%= link_to "Favorites (#{current_user.favorites.count})", favorites_path %></li>
               <li class="divider"></li>
               <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
               <% else %>
-
-              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li> <a href="#" data-reveal-id="sign-in-modal">Sign In</a></li>
             <% end %>
             </ul>
           </section>
         </nav>
+  <div id="sign-in-modal" class="reveal-modal remove-whitespace" data-reveal>
+<div class="row">
+  <%= render "login_forms/sign_in" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</div>
+
+  <div id="sign-up-modal" class="reveal-modal remove-whitespace" data-reveal>
+<div class="row">
+  <%= render "login_forms/sign_up" %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+</div>
+
+
     <main class='content row'>
     <%= yield %>
   </main>

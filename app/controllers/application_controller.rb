@@ -16,12 +16,12 @@ before_filter :store_location
 def store_location
   # store last url - this is needed for post-login redirect to whatever the user last visited.
   return unless request.get?
-  if (request.path != "/user_profiles/sign_in" &&
-      request.path != "/user_profiles/sign_up" &&
-      request.path != "/user_profiles/password/new" &&
-      request.path != "/user_profiles/password/edit" &&
-      request.path != "/user_profiles/confirmation" &&
-      request.path != "/user_profiles/sign_out" &&
+  if (request.path != "/user/sign_in" &&
+      request.path != "/user/sign_up" &&
+      request.path != "/user/password/new" &&
+      request.path != "/user/password/edit" &&
+      request.path != "/user/confirmation" &&
+      request.path != "/user/sign_out" &&
       !request.xhr?) # don't store ajax calls
     session[:previous_url] = request.fullpath
   end
