@@ -67,6 +67,36 @@ views/shelters/show
 #     t.datetime "updated_at", null: false
 #   end -->
 
+Similarly, you can generate a migration to remove a column from the command line:
+
+
+
+
+
+rails generate migration AddLinkToShelters link:string
+
+
+$ bin/rails generate migration RemoveEmailFromShelters email:string
+generates
+
+class RemovePartNumberFromProducts < ActiveRecord::Migration
+  def change
+    remove_column :products, :part_number, :string
+  end
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # K-9 Lifesavers
 
@@ -77,8 +107,7 @@ views/shelters/show
 # 34 Rollingside Drive
 # Fredericksburg, VA 22406
 
-# 721 Erie Ave
-# Takoma Park, MD 20912
+# 721 Erie Ave. Takoma Park, MD 20912
 
 # Main: (202) 263-1990
 
